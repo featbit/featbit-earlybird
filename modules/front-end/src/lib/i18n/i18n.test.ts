@@ -17,6 +17,7 @@ describe("global feature translations", () => {
     expect(i18n.t("auditLogs.comment")).toBe("Comment")
     expect(i18n.t("auditLogs.allUsers")).toBe("All users")
     expect(i18n.t("endUsers.title")).toBe("End Users")
+    expect(i18n.t("releaseDecision.experiments.new")).toBe("New experiment")
     expect(i18n.t("releaseHealth.title")).toBe("Release Health")
     expect(i18n.t("releaseHealth.status.data.stale")).toBe("Stale")
     expect(i18n.t("getStarted.title")).toBe("Get started")
@@ -47,7 +48,7 @@ describe("global feature translations", () => {
     await i18n.changeLanguage("zh")
 
     expect(i18n.t("webhooks.subtitle")).toBe(
-      "将功能开关和用户组事件发送到外部服务。"
+      "统一管理资源变更与 Release Health 告警的通知目标。"
     )
     expect(i18n.t("relayProxies.title")).toBe("中继代理")
     expect(i18n.t("accessTokens.title")).toBe("访问令牌")
@@ -56,6 +57,7 @@ describe("global feature translations", () => {
     expect(i18n.t("auditLogs.changeCount", { count: 2 })).toBe("2 项变更")
     expect(i18n.t("auditLogs.allUsers")).toBe("所有用户")
     expect(i18n.t("endUsers.title")).toBe("目标用户")
+    expect(i18n.t("releaseDecision.experiments.new")).toBe("新建实验")
     expect(i18n.t("releaseHealth.title")).toBe("发布健康")
     expect(i18n.t("releaseHealth.status.data.stale")).toBe("数据过期")
     expect(i18n.t("getStarted.title")).toBe("开始使用")
