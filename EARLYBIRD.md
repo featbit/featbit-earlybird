@@ -9,6 +9,41 @@ branch wholesale into `main`. When customer demand justifies a capability, the
 team should implement and review its production version separately, using the
 demo as a reference for behavior and user experience.
 
+## Repository and branches
+
+The dedicated repository is
+[`featbit/featbit-earlybird`](https://github.com/featbit/featbit-earlybird), a public
+fork of [`featbit/featbit`](https://github.com/featbit/featbit).
+
+- `main` starts from upstream main and is reserved for upstream synchronization.
+- `earlybird` contains the demos, including the Release Health implementation
+  and the verified September merge. Push demo changes to this branch in the fork.
+- Upstream synchronization is manual; creating the fork does not schedule syncs.
+
+In the existing FeatBit checkout, `origin` still points to `featbit/featbit` and
+the additional `earlybird` remote points to `featbit/featbit-earlybird`. The local
+`earlybird` branch tracks the fork's `earlybird` branch. To sync future changes
+from upstream, resolve any conflicts and validate before the final push:
+
+```sh
+git fetch origin main
+git switch earlybird
+git merge --no-ff origin/main
+# Run the relevant builds and tests before pushing.
+git push earlybird earlybird
+```
+
+For a separate checkout, clone the demo branch and add the upstream remote:
+
+```sh
+git clone --branch earlybird https://github.com/featbit/featbit-earlybird.git
+cd featbit-earlybird
+git remote add upstream https://github.com/featbit/featbit.git
+```
+
+In that separate checkout, `origin` is the fork and `upstream` is the main
+repository; fetch and merge `upstream/main` to bring in future upstream changes.
+
 ## September 2026 sync
 
 - Demo starting point: `releasehealth-design` at `cd28a0ce9`.
